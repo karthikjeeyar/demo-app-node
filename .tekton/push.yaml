@@ -36,7 +36,7 @@ spec:
         params:
           - name: echo-value-for-task
             value: "fetching $(params.echo-value)"
-     finally:
+    finally:
       - name: send-notifications
         taskSpec:
           params:
