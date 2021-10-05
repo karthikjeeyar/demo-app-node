@@ -52,4 +52,4 @@ spec:
                 - "$(inputs.params.echo-value-for-task)"
         params:
           - name: echo-value-for-task
-            value: "fetching $(params.echo-value)"
+            value: "Sending notification... $(params.echo-value) fetched"
