@@ -36,3 +36,20 @@ spec:
         params:
           - name: echo-value-for-task
             value: "fetching $(params.echo-value)"
+     finally:
+      - name: send-notifications
+        taskSpec:
+          params:
+          - name: echo-value-for-task
+            description: The value to echo out
+            default: this is not the param you're looking for
+          steps:
+            - name: echo
+              image: ubuntu
+              command:
+                - echo
+              args:
+                - "$(inputs.params.echo-value-for-task)"
+        params:
+          - name: echo-value-for-task
+            value: "fetching $(params.echo-value)"
