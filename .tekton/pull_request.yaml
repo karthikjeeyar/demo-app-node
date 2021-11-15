@@ -20,7 +20,7 @@ spec:
     params:
     - name: echo-value
       description: The value to echo out
-      default: code
+      default: application code
     tasks:
       - name: fetch
         taskSpec:
