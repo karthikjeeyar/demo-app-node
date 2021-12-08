@@ -1,1 +1,3 @@
 Test file
+
+Contains the test message
