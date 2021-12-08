@@ -1,3 +1,1 @@
-Test file
-
-Contains the test message
+Test file from test branch
