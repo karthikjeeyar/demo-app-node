@@ -78,6 +78,5 @@ spec:
   # This workspace will inject secret to help the git-clone task to be able to
   # checkout the private repositories
   - name: basic-auth
-    secret:
-      secretName: "pac-git-basic-auth-{{repo_owner}}-{{repo_name}}"
+    secret: "{{ git_auth_secret }}"
       
