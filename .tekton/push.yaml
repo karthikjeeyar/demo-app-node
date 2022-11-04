@@ -5,7 +5,7 @@ metadata:
   name: pipeline-as-code-on-push
   annotations:
     pipelinesascode.tekton.dev/on-event: "[push]"
-    pipelinesascode.tekton.dev/on-target-branch: "[main,master]"
+    pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/task: "[git-clone]"
     pipelinesascode.tekton.dev/task-1: "[https://git.io/Jn9Ee]"  # send-slack-notifications task
 spec:
