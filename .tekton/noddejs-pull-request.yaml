@@ -10,9 +10,9 @@ metadata:
     pipelinesascode.tekton.dev/on-target-branch: '[main]'
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: my-application-2
-    appstudio.openshift.io/component: noddejs
-    build.appstudio.openshift.io/component: noddejs
+    appstudio.openshift.io/application: test-application
+    appstudio.openshift.io/component: demo-app
+    build.appstudio.openshift.io/component: demo-app
     pipelines.appstudio.openshift.io/type: build
   name: noddejs-on-pull-request
   namespace: karthik-jk
