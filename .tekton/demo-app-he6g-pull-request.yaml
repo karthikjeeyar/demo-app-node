@@ -1,0 +1,48 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  annotations:
+    build.appstudio.redhat.com/commit_sha: '{{revision}}'
+    build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
+    build.appstudio.redhat.com/target_branch: '{{target_branch}}'
+    pipelinesascode.tekton.dev/max-keep-runs: "3"
+    pipelinesascode.tekton.dev/on-event: '[pull_request]'
+    pipelinesascode.tekton.dev/on-target-branch: '[main,master]'
+  creationTimestamp: null
+  labels:
+    appstudio.openshift.io/application: my-application-1
+    appstudio.openshift.io/component: demo-app-he6g
+    pipelines.appstudio.openshift.io/type: build
+  name: demo-app-he6g-on-pull-request
+  namespace: karthik-jk
+spec:
+  params:
+  - name: git-url
+    value: '{{repo_url}}'
+  - name: revision
+    value: '{{revision}}'
+  - name: output-image
+    value: quay.io/redhat-appstudio/user-workload:on-pr-{{revision}}
+  - name: dockerfile
+    value: https://raw.githubusercontent.com/karthikjeeyar/demo-app/main/./Dockerfile
+  - name: path-context
+    value: ./
+  pipelineRef:
+    bundle: quay.io/redhat-appstudio/hacbs-templates-bundle:latest
+    name: docker-build
+  workspaces:
+  - name: workspace
+    volumeClaimTemplate:
+      metadata:
+        creationTimestamp: null
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+      status: {}
+  - name: registry-auth
+    secret:
+      secretName: redhat-appstudio-registry-pull-secret
+status: {}
