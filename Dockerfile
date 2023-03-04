@@ -1,8 +1,9 @@
 
-FROM node:16.16 as build 
+FROM registry.access.redhat.com/ubi8/nodejs-14:latest
 
 
-WORKDIR /react-app
+
+WORKDIR /demo-app
 
 
 COPY package*.json .
